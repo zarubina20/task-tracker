@@ -26,6 +26,55 @@ body {
   font-family: 'Manrope', system-ui, sans-serif;
   font-size: 16px;
   line-height: 1.5;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+[data-theme="dark"] {
+  --bg: #1c1a18;
+  --surface: #272421;
+  --text: #ede8e2;
+  --muted: #9a938b;
+  --border: #3a3531;
+  --accent: #c47a58;
+  --accent-dark: #a86243;
+  --low: #7aa874;
+  --medium: #e0a63f;
+  --high: #cf5b4e;
+}
+
+.theme-toggle {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 38px;
+  height: 38px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 17px;
+  color: var(--text);
+  background-color: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.theme-toggle:hover {
+  border-color: var(--accent);
+  transform: scale(1.06);
+}
+
+.theme-toggle__icon--moon {
+  display: none;
+}
+
+[data-theme="dark"] .theme-toggle__icon--sun {
+  display: none;
+}
+
+[data-theme="dark"] .theme-toggle__icon--moon {
+  display: inline;
 }
 
 .container {
@@ -46,6 +95,7 @@ body {
 .header {
   margin-bottom: 24px;
   text-align: center;
+  position: relative;
 }
 
 .header__title {
@@ -66,6 +116,7 @@ body {
   background-color: var(--surface);
   border-radius: var(--radius);
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
 }
 
 .form__row {
@@ -85,7 +136,7 @@ body {
   border: 1px solid var(--border);
   border-radius: 8px;
   outline: none;
-  transition: border-color 0.2s;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
 }
 
 .form__input:focus,
@@ -195,6 +246,7 @@ body {
   border-radius: var(--radius);
   box-shadow: 0 1px 4px rgba(0, 0, 0, 0.04);
   animation: appear 0.25s ease;
+  transition: background-color 0.3s, border-color 0.3s, color 0.3s;
 }
 
 .task--low    { border-left-color: var(--low); }
@@ -253,6 +305,10 @@ body {
   text-align: center;
   color: var(--muted);
   font-size: 14px;
+}
+
+[data-theme="dark"] .form__select {
+  background-image: url("data:image/svg+xml;charset=utf-8,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'%3E%3Cpath d='M1 1.5L6 6.5L11 1.5' stroke='%239a938b' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
 }
 
 @keyframes appear {
