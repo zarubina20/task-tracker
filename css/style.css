@@ -30,7 +30,7 @@ body {
 }
 
 [data-theme="dark"] {
-  --bg: #1c1a18;
+  --bg: #0f172a;
   --surface: #272421;
   --text: #ede8e2;
   --muted: #9a938b;
