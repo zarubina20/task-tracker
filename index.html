@@ -4,8 +4,64 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Task Tracker</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-  <h1>Task Tracker</h1>
+  <div class="container">
+
+    <header class="header">
+      <h1 class="header__title">Task Tracker</h1>
+      <p class="header__subtitle">Keep track of what matters today</p>
+    </header>
+
+    <main class="main">
+
+      <form class="form" id="task-form" novalidate>
+        <div class="form__row">
+          <label class="visually-hidden" for="task-input">Task</label>
+          <input
+            class="form__input"
+            id="task-input"
+            type="text"
+            placeholder="What needs to be done?"
+            autocomplete="off"
+          >
+
+          <label class="visually-hidden" for="priority-select">Priority</label>
+          <select class="form__select" id="priority-select">
+            <option value="low">Low</option>
+            <option value="medium" selected>Medium</option>
+            <option value="high">High</option>
+          </select>
+
+          <button class="form__button" type="submit">Add task</button>
+        </div>
+
+        <p class="form__error" id="form-error" role="alert" hidden>
+          Please enter a task before adding it.
+        </p>
+      </form>
+
+      <section class="controls" aria-label="Filters">
+        <div class="filters" id="filters">
+          <button class="filter filter--active" type="button" data-filter="all">All</button>
+          <button class="filter" type="button" data-filter="active">Active</button>
+          <button class="filter" type="button" data-filter="completed">Completed</button>
+        </div>
+
+        <p class="counter">
+          <span class="counter__number" id="active-count">0</span> active
+        </p>
+      </section>
+
+      <ul class="task-list" id="task-list"></ul>
+
+      <p class="empty-state" id="empty-state">Nothing here yet. Add your first task above.</p>
+
+    </main>
+  </div>
 </body>
 </html>
