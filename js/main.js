@@ -89,3 +89,114 @@ function renderTasks() {
 
   updateActiveCount();
 }
+
+
+function createTaskElement(task) {
+  const li = document.createElement('li');
+
+  li.classList.add('task');
+  li.classList.add('task--' + task.priority);
+
+  if (task.completed) {
+    li.classList.add('task--completed');
+  }
+
+  li.dataset.id = task.id;
+
+  const checkbox = document.createElement('input');
+
+  checkbox.type = 'checkbox';
+  checkbox.classList.add('task__checkbox');
+  checkbox.checked = task.completed;
+
+  const text = document.createElement('span');
+
+  text.classList.add('task__text');
+  text.textContent = task.text;
+
+  const priority = document.createElement('span');
+
+  priority.classList.add('task__priority');
+  priority.textContent = task.priority;
+
+  const deleteButton = document.createElement('button');
+
+  deleteButton.type = 'button';
+  deleteButton.classList.add('task__delete');
+  deleteButton.textContent = '×';
+  deleteButton.setAttribute('aria-label', 'Delete task');
+
+  li.appendChild(checkbox);
+  li.appendChild(text);
+  li.appendChild(priority);
+  li.appendChild(deleteButton);
+
+  taskList.appendChild(li);
+}
+
+
+function completeTask(taskId) {
+  for (let i = 0; i < tasks.length; i++) {
+
+    if (tasks[i].id === taskId) {
+      tasks[i].completed = !tasks[i].completed;
+      break;
+    }
+
+  }
+
+  saveTasks();
+  renderTasks();
+}
+
+
+function completeTask(taskId) {
+  for (let i = 0; i < tasks.length; i++) {
+
+    if (tasks[i].id === taskId) {
+      tasks[i].completed = !tasks[i].completed;
+      break;
+    }
+
+  }
+
+  saveTasks();
+  renderTasks();
+}
+
+
+function deleteTask(taskId) {
+  const newTasks = [];
+
+  for (let i = 0; i < tasks.length; i++) {
+
+    if (tasks[i].id !== taskId) {
+      newTasks.push(tasks[i]);
+    }
+
+  }
+
+  tasks = newTasks;
+
+  saveTasks();
+  renderTasks();
+}
+
+
+function changeFilter(filter) {
+  currentFilter = filter;
+
+  const filterButtons = filters.querySelectorAll('.filter');
+
+  for (let i = 0; i < filterButtons.length; i++) {
+
+    filterButtons[i].classList.remove('filter--active');
+
+    if (filterButtons[i].dataset.filter === filter) {
+      filterButtons[i].classList.add('filter--active');
+    }
+
+  }
+
+  renderTasks();
+}
