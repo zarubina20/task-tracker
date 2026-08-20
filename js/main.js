@@ -1,21 +1,8 @@
-const savedTheme = localStorage.getItem('theme');
-
-if (savedTheme === 'dark') {
-  document.documentElement.setAttribute('data-theme', 'dark');
-}
-
-const themeToggle = document.querySelector('#theme-toggle');
-
-function toggleTheme() {
-  const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-
-  if (isDark) {
-    document.documentElement.removeAttribute('data-theme');
-    localStorage.setItem('theme', 'light');
-  } else {
-    document.documentElement.setAttribute('data-theme', 'dark');
-    localStorage.setItem('theme', 'dark');
-  }
-}
-
-themeToggle.addEventListener('click', toggleTheme);
+const taskForm = document.querySelector('#task-form');
+const taskInput = document.querySelector('#task-input');
+const prioritySelect = document.querySelector('#priority-select');
+const taskList = document.querySelector('#task-list');
+const activeCount = document.querySelector('#active-count');
+const emptyState = document.querySelector('#empty-state');
+const formError = document.querySelector('#form-error');
+const filters = document.querySelector('#filters');
