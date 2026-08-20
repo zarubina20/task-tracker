@@ -264,7 +264,6 @@ body {
 .task__text {
   font-size: 15px;
   word-break: break-word;
-  cursor: pointer;
 }
 
 .task--completed .task__text {
@@ -276,6 +275,7 @@ body {
   padding: 3px 10px;
   font-size: 12px;
   font-weight: 600;
+  text-transform: capitalize;
   color: var(--muted);
   border: 1px solid var(--border);
   border-radius: 20px;
@@ -354,4 +354,8 @@ body {
   .task {
     padding: 16px 18px;
   }
+}
+
+.task__priority {
+  text-transform: capitalize;
 }
