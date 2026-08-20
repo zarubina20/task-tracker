@@ -355,7 +355,3 @@ body {
     padding: 16px 18px;
   }
 }
-
-.task__priority {
-  text-transform: capitalize;
-}
