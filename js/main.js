@@ -54,3 +54,38 @@ function addTask(event) {
 
   taskInput.focus();
 }
+
+
+function renderTasks() {
+  taskList.innerHTML = '';
+
+  let visibleTasks = [];
+
+  if (currentFilter === 'all') {
+    visibleTasks = tasks;
+  }
+
+  if (currentFilter === 'active') {
+    visibleTasks = tasks.filter(function(task) {
+      return task.completed === false;
+    });
+  }
+
+  if (currentFilter === 'completed') {
+    visibleTasks = tasks.filter(function(task) {
+      return task.completed === true;
+    });
+  }
+
+  if (visibleTasks.length === 0) {
+    emptyState.hidden = false;
+  } else {
+    emptyState.hidden = true;
+  }
+
+  for (let i = 0; i < visibleTasks.length; i++) {
+    createTaskElement(visibleTasks[i]);
+  }
+
+  updateActiveCount();
+}
